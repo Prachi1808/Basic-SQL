@@ -1,0 +1,54 @@
+Creating database
+create database Employee;
+show databases;
+use Employee;
+show tables;
+ Creating tables
+create table Employee_Details
+(
+EmpID int NOT NULL AUTO_INCREMENT,
+EmpName varchar(45),
+EmpAge varchar(45)
+Department varchar(45),
+PRIMARY KEY (EmpID)
+);
+ desc Employee_Details;
+ INSERT INTO `employee`.`employee_details` (`EmpID`, `EmpName`, `EmpAge`, `EmpDept`) VALUES ('7', 'Jay', '29', 'IT');
+
+ INSERT INTO `employee`.`employee_details` (`EmpID`, `EmpName`, `EmpAge`, `EmpDept`) VALUES ('6', '', '29', 'IT');
+___________________________________________________________________________
+
+UPDATE `employee`.`employee_details` SET `EmpAge` = '33' WHERE (`EmpID` = '4');
+UPDATE `employee`.`employee_details` SET `EmpAge` = '25' WHERE (`EmpID` = '5');
+_______________________________________________________
+select * from Employee_Details;
+delete from Employee_Details where EmpID = '1';
+
+select * from Employee_Details where EmpName = 'Prachi';
+
+_______________________________________________
+
+/*Group by count,min,max*/
+
+select count(*) from Employee_Details where  EmpDepartment = 'IT';
+select count(*) from Employee_Details where  EmpDepartment = 'Finance';
+
+select count(*) from Employee_Details group by  EmpDepartment;
+
+select min(Age) from Employee_Details where EmpAge = '25' group by EmpAge;
+select max(Age) from Employee_Details where EmpAge = '30' group by EmpAge;
+
+select * from Employee_Details order by EmpAge desc;
+select * from Employee_Details order by EmpAge asc;
+_____________________________________________________
+
+SELECT COUNT(EmpDeparment),COUNT(EmpAge),EmpID FROM Employee_Details GROUP BY EmpID;
+______
+SELECT EmpID,EmpName FROM Employee_Details ORDER BY EmpName;
+_____
+/* Indexes */
+create index by EmpID on Employee_Details(EmpID,EmpName,EmpAge);
+select * from by EmpID;
+ALTER TABLE Employee_Details DROP INDEX by EmpID;
+show indexes from Employee_Details;
+_________________________
